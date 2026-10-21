@@ -69,7 +69,7 @@ int main() {
 
 
 
-
+// function untuk memformat angka dengan pemisah ribuan dan dua desimal
 string formatAngka(double angka) {
     stringstream stream;
     stream << fixed << setprecision(2) << angka;
