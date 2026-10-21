@@ -41,19 +41,19 @@ jika kamu tidak mendeklarasikan perintah (using namespace std) di awal kode [Dic
 
 */ 
 
-// iostream berguna untuk memanggil function cin, endl atau cout
+// iostream berguna untuk memanggil function input dan output
 #include <iostream>
 
-// iomanip berguna untuk memanggi function left atau setw
+// iomanip berguna untuk memanggil function manipulasi input dan output
 #include <iomanip>
 
-// string menjadi sebuah parent dalam konsep oop
+// string berguna untuk memanggil function string
 #include <string>
 
-// sstream memanggil function stream
+// sstream  berguna untuk memanggil function stringstream
 #include <sstream>
 
-// bentuk deklarasi function
+// bentuk deklarasi function formatAngka yang akan digunakan untuk memformat angka dengan koma sebagai pemisah ribuan
 std::string formatAngka(double angka);
 
 // function utama dalam cpp itu bernama main
