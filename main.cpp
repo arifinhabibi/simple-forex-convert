@@ -28,40 +28,64 @@ SELESAI
 
 */ 
 
+/*
 
+Bahasa pemrograman C++ mewajibkan setiap aplikasi memiliki satu fungsi utama 
+bernama (int main()) sebagai gerbang masuk tunggal yang berjalan dari atas ke bawah,
+di mana kata int berfungsi untuk melaporkan status sukses 
+program berupa angka bulat (return 0;) ke sistem operasi [Dicoding Blog].
+Dalam struktur dasarnya, C++ memisahkan tipe data dasar seperti int atau double
+yang bisa langsung ditulis, dengan tipe data objek atau fitur bawaan pustaka standar 
+seperti (std::string), (std::cin), dan (std::cout) yang wajib ditulis dengan awalan (std::) 
+jika kamu tidak mendeklarasikan perintah (using namespace std) di awal kode [Dicoding Blog].
+
+*/ 
+
+// iostream berguna untuk memanggil function cin, endl atau cout
 #include <iostream>
+
+// iomanip berguna untuk memanggi function left atau setw
 #include <iomanip>
-using namespace std;
 
-string formatAngka(double angka);
+// string menjadi sebuah parent dalam konsep oop
+#include <string>
 
+// sstream memanggil function stream
+#include <sstream>
+
+// bentuk deklarasi function
+std::string formatAngka(double angka);
+
+// function utama dalam cpp itu bernama main
 int main() {
+    // deklarasi variabel
     int jumlahDollar;
     double kursUSD, kursSGD;
 
-    cout << "Masukkan kurs USD ke IDR: ";
-    cin >> kursUSD;
+    std::cout << "Masukkan kurs USD ke IDR: ";
+    std::cin >> kursUSD;
 
-    cout << "Masukkan kurs SGD ke IDR: ";
-    cin >> kursSGD;
+    std::cout << "Masukkan kurs SGD ke IDR: ";
+    std::cin >> kursSGD;
 
-    cout << "\nTabel Konversi Mata Uang\n\n";
+    std::cout << "\nTabel Konversi Mata Uang\n\n";
 
-    cout << left
-         << setw(15) << "USD"
-         << setw(20) << "IDR"
-         << setw(20) << "SGD"
-         << "IDR" << endl;
+    std::cout << std::left
+         << std::setw(15) << "USD"
+         << std::setw(20) << "IDR"
+         << std::setw(20) << "SGD"
+         << "IDR" << std::endl;
 
-    cout << "---------------------------------------------------------------\n";
+    std::cout << "---------------------------------------------------------------\n";
 
+    // looping untuk menampilkan tabel konversi mata uang
     for (jumlahDollar = 1; jumlahDollar <= 10; jumlahDollar++) {
-        cout << left
-             << setw(15) << jumlahDollar
-             << setw(20) << formatAngka(jumlahDollar * kursUSD)
-             << setw(20) << jumlahDollar
+        std::cout << std::left
+             << std::setw(15) << jumlahDollar
+             << std::setw(20) << formatAngka(jumlahDollar * kursUSD)
+             << std::setw(20) << jumlahDollar
              << formatAngka(jumlahDollar * kursSGD)
-             << endl;
+             << std::endl;
     }
 
     return 0;
@@ -69,16 +93,16 @@ int main() {
 
 
 
-// function untuk memformat angka dengan pemisah ribuan dan dua desimal
-string formatAngka(double angka) {
-    stringstream stream;
-    stream << fixed << setprecision(2) << angka;
+// Function untuk memformat angka dengan koma sebagai pemisah ribuan
+std::string formatAngka(double angka) {
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << angka;
 
-    string hasil = stream.str();
+    std::string hasil = stream.str();
     size_t posisiDesimal = hasil.find('.');
 
-    string bagianBulat = hasil.substr(0, posisiDesimal);
-    string bagianDesimal = hasil.substr(posisiDesimal);
+    std::string bagianBulat = hasil.substr(0, posisiDesimal);
+    std::string bagianDesimal = hasil.substr(posisiDesimal);
 
     for (int posisi = static_cast<int>(bagianBulat.length()) - 3;
          posisi > 0; posisi -= 3) {
